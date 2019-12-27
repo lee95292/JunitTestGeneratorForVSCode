@@ -1,5 +1,7 @@
 const fs = require("fs");
 const testfile = require("../resource/junitTestfileTemplate");
+const vscode = require("vscode");
+
 function generateJunitTest(selectedFile) {
   let testfileURI = getTestPath(selectedFile.fsPath);
   let testfileURL = testfileURI.split("\\");
@@ -11,6 +13,7 @@ function generateJunitTest(selectedFile) {
   recursiveMkdir(testfileURL);
 
   if (!isValidateTestPath(testfileURI)) {
+    vscode.window.showErrorMessage(`${className} already exist`);
     return false;
   }
 
@@ -18,7 +21,22 @@ function generateJunitTest(selectedFile) {
     testfileURI,
     testfile.taggedJunitTestfile`${className} ${"default"}`
   );
+  showSuccessMsg(testfileURI);
+  vscode.window.showInformationMessage(`${className} generated!`);
+
+  // showSeccessMessage(testfileURI, className);
   return true;
+}
+
+function showSuccessMsg(testfileURI) {
+  if (fs.existsSync(testfileURI)) {
+    let promise = new Promise(function(resolve, reject) {
+      resolve(vscode.workspace.openTextDocument(testfileURI));
+    });
+    promise.then(function(value) {
+      vscode.window.showTextDocument(value);
+    });
+  }
 }
 function recursiveMkdir(path) {
   if (fs.existsSync(path)) {
@@ -35,9 +53,6 @@ function recursiveMkdir(path) {
   fs.mkdirSync(mkdirPath);
   return mkdirPath;
 }
-// function replaceAll(str, origin, dest) {
-//   return str.split(origin).join(dest);
-// }
 
 function isValidateTestPath(path) {
   if (fs.existsSync(path)) {
@@ -50,12 +65,4 @@ function isValidateTestPath(path) {
 function getTestPath(file) {
   return file.replace("main", "test").replace(".java", "Test.java");
 }
-// function generateJunitTest(selectedFile, selectedFiles) {
-//     console.log(vscode.workspace.workspaceFolders);
-//     console.log(selectedFile.path);
-//     for (const originFile of selectedFile) {
-//       console.log(originFile.path);
-//     }
-//   }
-
 exports.generateJunitTest = generateJunitTest;
