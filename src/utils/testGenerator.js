@@ -1,14 +1,11 @@
 const fs = require("fs");
-const vsocde = require("vscode");
-const path = require("path");
+const testfile = require("../resource/junitTestfileTemplate");
 function generateJunitTest(selectedFile) {
-  //   fs.writeFileSync(, "test");
-  // console.log(fs.readFileSync(selectedFile.path));
-
   let testfileURI = getTestPath(selectedFile.fsPath);
-
   let testfileURL = testfileURI.split("\\");
-  testfileURL.pop();
+  let className = testfileURL.pop();
+
+  className = className.replace(".java", "");
   testfileURL = testfileURL.join("\\");
 
   recursiveMkdir(testfileURL);
@@ -17,7 +14,10 @@ function generateJunitTest(selectedFile) {
     return false;
   }
 
-  fs.appendFileSync(testfileURI, "test");
+  fs.appendFileSync(
+    testfileURI,
+    testfile.taggedJunitTestfile`${className} ${"default"}`
+  );
   return true;
 }
 function recursiveMkdir(path) {

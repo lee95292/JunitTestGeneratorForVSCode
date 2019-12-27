@@ -1,22 +1,21 @@
-let junitTemplate = `
+function taggedJunitTestfile(str, className, packageName) {
+  return `package ${packageName};
 import org.junit.Test;
+import org.junit.Before;    
+    
+public class ${className} {
 
+    @Before
+    public void setup(){
 
-public class ${} {
-
-	@Autowired
-	JBNUMainCrawlService crawl;
-
-	@Before
-	public void setup(){
-		
-	}
-	@Test
-	public void test() {
-	}
-
+    }
+        
+    @Test
+    public void test() {
+        
+    }
+}
+    `;
 }
 
-`;
-
-exports.junitTemplate = junitTemplate;
+exports.taggedJunitTestfile = taggedJunitTestfile;
