@@ -3,7 +3,7 @@
   "publisher": "marcoLee",
   "displayName": "Testfile Generator for Junit",
   "description": "it provide context menu for generating junit test file",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.41.0"
   },
@@ -37,10 +37,6 @@
       {
         "command": "extension.generateTest",
         "title": "Generate Junit Testfile"
-      },
-      {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
       }
     ]
   },

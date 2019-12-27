@@ -1,4 +1,4 @@
-# Testfile-generator-for-junit README
+# Testfile-generator-for-Junit README
 
 It provides (editor,explorer)context menu for generating Junit test file.
 
@@ -6,6 +6,7 @@ It provides (editor,explorer)context menu for generating Junit test file.
 
 - Context menu on editor, explorer.
 - prevent overload your file if test file already exist.
+  ![description](./info/desc.gif)
 
 ## Known Issues
 
@@ -13,6 +14,6 @@ Working at Gradle/Maven project in windows system is confirmed.
 
 ## Release Notes
 
-### 0.0.2
+### 0.0.3
 
 ### 0.0.\*
