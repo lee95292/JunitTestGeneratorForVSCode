@@ -6,7 +6,7 @@ It provides (editor,explorer)context menu for generating Junit test file.
 
 - Context menu on editor, explorer.
 - prevent overload your file if test file already exist.
-  ![description](./info/desc.gif)
+  ![description](resource/desc.gif)
 
 ## Known Issues
 
