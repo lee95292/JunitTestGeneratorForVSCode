@@ -25,6 +25,10 @@
         {
           "command": "extension.generateTest",
           "when": "resourceExtname==.java"
+        },
+        {
+          "command": "extension.setSrc",
+          "when": "TODO: "
         }
       ],
       "editor/context": [
