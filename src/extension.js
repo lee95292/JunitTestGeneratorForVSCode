@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
 const testGenerator = require("./generator/testGenerator.js");
+const configurer = require("./configurer/customConfigurer.js");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -14,6 +15,13 @@ function activate(context) {
   console.log(
     'Congratulations, your extension "testfile-generator-for-junit" is now active!'
   );
+  const extConfig = vscode.workspace.getConfiguration(
+    "tasks",
+    vscode.workspace.workspaceFolders[0].uri
+  );
+  extConfig.update("tst", "gogo", vscode.ConfigurationTarget.WorkspaceFolder);
+  console.log(extConfig);
+  // configurer.customConfig.extensionConfig();
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand
@@ -22,7 +30,11 @@ function activate(context) {
     "extension.generateTest",
     testGenerator.generateJunitTest
   );
-
+  let configCommand = vscode.commands.registerCommand(
+    "extension.configTestLocation",
+    configurer.customConfig.configTestLocation
+  );
+  context.subscriptions.push(configCommand);
   context.subscriptions.push(disposable);
 }
 

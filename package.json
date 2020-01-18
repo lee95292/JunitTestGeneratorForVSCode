@@ -16,6 +16,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onLanguage:java",
     "onCommand:extension.generateTest"
   ],
   "main": "./src/extension.js",
@@ -27,8 +28,8 @@
           "when": "resourceExtname==.java"
         },
         {
-          "command": "extension.setSrc",
-          "when": "TODO: "
+          "command": "extension.configTestLocation",
+          "when": "explorerResourceIsFolder"
         }
       ],
       "editor/context": [
@@ -42,6 +43,10 @@
       {
         "command": "extension.generateTest",
         "title": "Generate Junit Testfile"
+      },
+      {
+        "command": "extension.configTestLocation",
+        "title": "Set as Test Location"
       }
     ]
   },
