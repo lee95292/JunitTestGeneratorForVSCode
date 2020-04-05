@@ -1,3 +1,5 @@
+(**This project will be updated from May 2020.** )
+
 # Testfile-generator-for-Junit README
 
 It provides (editor,explorer)context menu for generating Junit test file.
