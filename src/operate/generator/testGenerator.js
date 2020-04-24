@@ -1,5 +1,5 @@
 const fs = require("fs");
-const testfile = require("../resource/junitTestfileTemplate");
+const testfile = require("../../resource/junitTestfileTemplate");
 const vscode = require("vscode");
 
 function generateJunitTest(selectedFile) {
@@ -30,10 +30,10 @@ function generateJunitTest(selectedFile) {
 
 function showSuccessMsg(testfileURI) {
   if (fs.existsSync(testfileURI)) {
-    let promise = new Promise(function(resolve, reject) {
+    let promise = new Promise(function (resolve, reject) {
       resolve(vscode.workspace.openTextDocument(testfileURI));
     });
-    promise.then(function(value) {
+    promise.then(function (value) {
       vscode.window.showTextDocument(value);
     });
   }
@@ -46,9 +46,7 @@ function recursiveMkdir(path) {
   let addition = subDir.pop();
   subDir = subDir.join("\\");
 
-  let mkdirPath = recursiveMkdir(subDir)
-    .concat("\\")
-    .concat(addition);
+  let mkdirPath = recursiveMkdir(subDir).concat("\\").concat(addition);
 
   fs.mkdirSync(mkdirPath);
   return mkdirPath;

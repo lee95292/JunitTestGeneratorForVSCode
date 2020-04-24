@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
-const testGenerator = require("./generator/testGenerator.js");
+const testGenerator = require("./operate/generator/testGenerator.js");
 const configurer = require("./configurer/customConfigurer.js");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -45,5 +45,5 @@ function deactivate() {}
 
 module.exports = {
   activate,
-  deactivate
+  deactivate,
 };

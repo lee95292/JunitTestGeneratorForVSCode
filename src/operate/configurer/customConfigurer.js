@@ -7,6 +7,7 @@ function configTestLocation(selectedFile) {
     "tasks",
     vscode.workspace.workspaceFolders[0].uri
   );
+  console.log("fsPath", fsPath);
   if (!fs.existsSync(selectedFile.fsPath)) {
     console.log("doesnt exist");
   }
@@ -22,5 +23,5 @@ function configTestLocation(selectedFile) {
 }
 
 exports.customConfig = {
-  configTestLocation
+  configTestLocation,
 };
