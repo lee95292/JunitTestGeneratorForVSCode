@@ -1,0 +1,1 @@
+exports.constant = require("./constant");
