@@ -1,13 +1,16 @@
-const lang = require("./").lang;
 const string = require("./").string;
-
+const lang = string.lang;
+const testTemplateType = string.testTemplateType;
+const testFrameworkVersion = string.testFrameworkVersion;
+/*
+  call as [test framework] [test framework version] 
+*/
 exports.testFramework = {
-  junit: [
-    {
-      version: string.testFrameworkVersion.default,
+  junit: {
+    [testFrameworkVersion.default]: {
       lang: lang.java,
-      type: string.testTemplateType.default,
-      testSource: (filename, packagePath = "...") =>
+      type: testTemplateType.default,
+      testSource: (filename, packagePath = "package.com") =>
         `package ${packagePath}${filename};
     import org.junit.Test;
     import org.junit.Before;    
@@ -21,20 +24,19 @@ exports.testFramework = {
             
         @Test
         public void test() {
-            
         }
     }
     `,
     },
-  ],
+  },
 
-  jest: [
-    {
-      version: string.testFrameworkVersion.default,
+  jest: {
+    [string.testFrameworkVersion.default]: {
       lang: lang.javascript,
+      type: testTemplateType.default,
       testSource: (filename) => ``,
     },
-  ],
+  },
 };
 
 exports.defaultFramework = {
