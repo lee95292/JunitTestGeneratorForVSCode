@@ -51,7 +51,7 @@
     ]
   },
   "scripts": {
-    "test": "node ./test/runTest.js"
+    "test": "jest"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -60,6 +60,7 @@
     "@types/vscode": "^1.41.0",
     "eslint": "^6.6.0",
     "glob": "^7.1.5",
+    "jest": "^25.5.4",
     "mocha": "^6.2.2",
     "typescript": "^3.6.4",
     "vscode-test": "^1.2.2"
