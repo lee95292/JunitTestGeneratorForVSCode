@@ -64,6 +64,7 @@
     "vscode-test": "^1.2.2"
   },
   "dependencies": {
-    "fs": "0.0.2"
+    "fs": "0.0.2",
+    "minimist": "^1.2.5"
   }
 }
